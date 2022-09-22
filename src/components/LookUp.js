@@ -16,7 +16,11 @@ function Lookup() {
       .then(function () {
         setText();
       })
-      .catch((error) => console.log("Request Failed:", error));
+      .catch((error) =>
+        setDefinition(
+          "We couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead."
+        )
+      );
   }
 
   function setText() {
