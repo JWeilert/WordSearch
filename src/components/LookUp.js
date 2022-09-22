@@ -1,31 +1,32 @@
 import { useEffect, useState } from "react";
 
 function Lookup() {
-  var [wordSearch, setWordSearch] = useState("hello");
-  var [word, setWord] = useState([]);
+  var [wordSearch, setWordSearch] = useState();
+  var [word, setWord] = useState(null);
   var [definition, setDefinition] = useState(null);
   var [definitionNumber, setDefinitionNumber] = useState(0);
   function loadSearch() {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordSearch}`)
       .then((response) => response.json())
-      .then((data) => setWord(data))
-      .then("here")
+      .then((data) => {
+        word = data;
+        setWord(word);
+      })
+      .then(console.log(word))
       .then(function () {
-        console.log(word);
         setText();
-      });
+      })
+      .catch((error) => console.log("Request Failed:", error));
   }
 
   function setText() {
     console.log(word);
     setDefinition(word[0].meanings[0].definitions[definitionNumber].definition);
-    console.log(definition);
   }
 
   function nextDefinition() {
     if (definitionNumber < word[0].meanings[0].definitions.length - 1) {
       setDefinitionNumber((definitionNumber += 1));
-      console.log(definitionNumber);
     } else {
       setDefinitionNumber(0);
     }
@@ -33,7 +34,7 @@ function Lookup() {
 
   useEffect(() => {
     loadSearch();
-  }, [definitionNumber, wordSearch]);
+  }, [definitionNumber, wordSearch, setWord]);
 
   return (
     <div>
@@ -45,19 +46,12 @@ function Lookup() {
           <input
             type="text"
             onChange={(e) => {
+              setDefinitionNumber(0);
               setWordSearch(e.target.value);
             }}
           />
         </lable>
       </form>
-      <button
-        onClick={() => {
-          setDefinitionNumber(0);
-          loadSearch();
-        }}
-      >
-        Search
-      </button>
       <button onClick={nextDefinition}>next</button>
     </div>
   );
