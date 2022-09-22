@@ -24,7 +24,7 @@ function Lookup() {
   }
 
   function setText() {
-    console.log(word);
+    console.log(word.length);
     setDefinition(word[0].meanings[0].definitions[definitionNumber].definition);
   }
 
@@ -43,7 +43,7 @@ function Lookup() {
   return (
     <div>
       <h1>{wordSearch}</h1>
-      <h1>{definition}</h1>
+      <h3>{definition}</h3>
       <form>
         <lable>
           Enter Word:
@@ -57,6 +57,13 @@ function Lookup() {
         </lable>
       </form>
       <button onClick={nextDefinition}>next</button>
+      <div>
+        {word.length != undefined && (
+          <h2>
+            {definitionNumber + 1} of {word[0].meanings[0].definitions.length}
+          </h2>
+        )}
+      </div>
     </div>
   );
 }
