@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function Lookup() {
   var [wordSearch, setWordSearch] = useState();
-  var [word, setWord] = useState(null);
+  var [word, setWord] = useState({});
   var [definition, setDefinition] = useState(null);
   var [definitionNumber, setDefinitionNumber] = useState(0);
   function loadSearch() {
