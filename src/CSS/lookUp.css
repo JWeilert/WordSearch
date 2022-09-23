@@ -16,7 +16,7 @@
 
 #definition{
     padding-bottom: 1em;
-    color: #FE5E54
+    color: #fc6f65
 }
 
 #outOf{
@@ -43,8 +43,6 @@ form{
     justify-content: center;
 }
 
-
-
 .defButton{
     background-color: #3CBC8D;
     margin: 1em;
@@ -56,8 +54,31 @@ form{
     border-radius: 1em;
 }
 
-.defButton:hover{ 
+.defButton:hover{
     background-color: #329571;
     border: 5px solid #053e39;
 }
 
+#audio{
+    padding: 2%;
+    background-color: #3CBC8D;
+    margin: 1em;
+    border: 2px solid #075f58;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+#audio:hover{
+    background-color: #329571;
+    border: 2px solid #053e39;
+}
+
+#ANF{
+    color: #efb95b;
+    font-weight: bolder;
+}
+
+#error{
+    color: rgb(192, 16, 16);
+}

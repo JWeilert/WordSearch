@@ -7,23 +7,25 @@ function Lookup() {
   var [definition, setDefinition] = useState(null);
   var [definitionNumber, setDefinitionNumber] = useState(0);
   var [audio, setAudio] = useState("");
-
+  var [error, setError] = useState(false);
   function loadSearch() {
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordSearch}`)
       .then((response) => response.json())
       .then((data) => {
         word = data;
         setWord(word);
+        setError(false);
       })
       .then(console.log(word))
       .then(function () {
         setText();
       })
-      .catch((error) =>
+      .catch((error) => {
         setDefinition(
           "We couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead."
-        )
-      )
+        );
+        setError(true);
+      })
       .then(function () {
         setAud();
       });
@@ -92,7 +94,7 @@ function Lookup() {
             )}{" "}
             <hr />
           </div>
-          <div id="definition">
+          <div id={error ? "error" : "definition"}>
             <h2>{definition}</h2>
           </div>
           <div id="outOf">
@@ -105,9 +107,10 @@ function Lookup() {
           </div>
           <br />
           <hr />
-          {audio !== "" && word.length !== undefined && (
-            <div>
+          <div>
+            {audio !== "" && (
               <button
+                id="audio"
                 onClick={() => {
                   setAud();
                   playAud();
@@ -115,8 +118,11 @@ function Lookup() {
               >
                 Play Audio
               </button>
-            </div>
-          )}
+            )}
+            {audio === "" && word.length !== undefined && (
+              <p id="ANF">Sorry, there is currently audio for this word.</p>
+            )}
+          </div>
         </div>
         <div className="buttonContainer">
           <button className="defButton" onClick={nextDefinition}>
