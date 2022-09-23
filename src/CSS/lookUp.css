@@ -1,0 +1,22 @@
+.box{
+    width: 75%;
+    border: 15px solid green;
+    padding: .5em .5em 0em .5em;
+    margin: auto;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    overflow: hidden
+}
+
+#searchedWord{
+    padding-bottom: 2em;
+}
+
+#definition{
+    padding-bottom: 1em;
+    color: blue
+}
+
+#outOf{
+    float: right;
+}

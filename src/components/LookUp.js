@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import "../CSS/lookUp.css";
 
 function Lookup() {
-  var [wordSearch, setWordSearch] = useState();
+  var [wordSearch, setWordSearch] = useState("Example");
   var [word, setWord] = useState({});
   var [definition, setDefinition] = useState(null);
   var [definitionNumber, setDefinitionNumber] = useState(0);
@@ -42,28 +43,40 @@ function Lookup() {
 
   return (
     <div>
-      <h1>{wordSearch}</h1>
-      <h3>{definition}</h3>
-      <form>
-        <lable>
-          Enter Word:
-          <input
-            type="text"
-            onChange={(e) => {
-              setDefinitionNumber(0);
-              setWordSearch(e.target.value);
-            }}
-          />
-        </lable>
-      </form>
-      <button onClick={nextDefinition}>next</button>
-      <div>
-        {word.length != undefined && (
-          <h2>
-            {definitionNumber + 1} of {word[0].meanings[0].definitions.length}
-          </h2>
-        )}
+      <div className="box">
+        <div id="searchedWord">
+          {wordSearch != "" && (
+            <h1>{wordSearch[0].toUpperCase() + wordSearch.substring(1)}</h1>
+          )}{" "}
+          <hr />
+        </div>
+        <div id="definition">
+          <h2>{definition}</h2>
+        </div>
+        <div id="outOf">
+          {word.length != undefined && (
+            <out>
+              Definition: {definitionNumber + 1} of{" "}
+              {word[0].meanings[0].definitions.length}
+            </out>
+          )}
+        </div>
       </div>
+      <div>
+        <p>Enter Word:</p>
+        <form>
+          <lable>
+            <input
+              type="text"
+              onChange={(e) => {
+                setDefinitionNumber(0);
+                setWordSearch(e.target.value);
+              }}
+            />
+          </lable>
+        </form>
+      </div>
+      <button onClick={nextDefinition}>Next Definition</button>
     </div>
   );
 }
