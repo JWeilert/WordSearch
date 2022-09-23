@@ -1,22 +1,63 @@
 .box{
-    width: 75%;
-    border: 15px solid green;
+    width: 50%;
+    border: 15px solid #420a9a;
     padding: .5em .5em 0em .5em;
-    margin: auto;
     margin-bottom: 2em;
     margin-top: 2em;
-    overflow: hidden
+    overflow: hidden;
+    background-color: #7549bd;
+    border-radius: 2em;
 }
 
 #searchedWord{
     padding-bottom: 2em;
+    color: #FFB3C1
 }
 
 #definition{
     padding-bottom: 1em;
-    color: blue
+    color: #FE5E54
 }
 
 #outOf{
+    color:yellow;
     float: right;
 }
+
+input{
+    padding: .5%;
+    border: 2px solid #075f58;
+    background-color: #3CBC8D;
+    border-radius: 1em;
+    text-align: center;
+}
+
+form{
+    margin-top: 2%;
+}
+
+#flex{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.defButton{
+    background-color: #3CBC8D;
+    margin: 1em;
+    border: 5px solid #075f58;
+    color: white;
+    padding: 10%;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 1em;
+}
+
+.defButton:hover{ 
+    background-color: #329571;
+    border: 5px solid #053e39;
+}
+
