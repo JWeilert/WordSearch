@@ -120,7 +120,7 @@ function Lookup() {
               </button>
             )}
             {audio === "" && word.length !== undefined && (
-              <p id="ANF">Sorry, there is currently audio for this word.</p>
+              <p id="ANF">Sorry, there is currently no audio for this word.</p>
             )}
           </div>
         </div>
